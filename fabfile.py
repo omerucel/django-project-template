@@ -44,23 +44,32 @@ def stage():
 def production():
     pass
 
-### DEVELOPMENT ###
+###
 
-def dev_syncdb():
-    local('DJANGO_SETTINGS_MODULE={{ project_name }}.settings_development python manage.py syncdb')
+def syncdb():
+    with shell_env(DJANGO_SETTINGS_MODULE=env.django_settings_module):
+        local('python manage.py syncdb')
 
-def dev_collectstatic():
-    local('mkdir static')
-    local('cd static && python ../manage.py collectstatic')
+def init_migration():
+    with shell_env(DJANGO_SETTINGS_MODULE=env.django_settings_module):
+        local('python manage.py schemamigration {{ project_name }} --initial')
 
-def dev_runserver():
-    local('DJANGO_SETTINGS_MODULE={{ project_name }}.settings_development python manage.py runserver 0.0.0.0:8080')
+def migrate():
+    with shell_env(DJANGO_SETTINGS_MODULE=env.django_settings_module):
+        local('python manage.py migrate {{ project_name }}')
 
 def dev_check_migration():
-    local('DJANGO_SETTINGS_MODULE={{ project_name }}.settings_development python manage.py schemamigration {{ project_name }} --auto')
+    with shell_env(DJANGO_SETTINGS_MODULE=env.django_settings_module):
+        local('python manage.py schemamigration {{ project_name }} --auto')
 
-def dev_migrate():
-    local('DJANGO_SETTINGS_MODULE={{ project_name }}.settings_development python manage.py migrate {{ project_name }}')
+def runserver():
+    with shell_env(DJANGO_SETTINGS_MODULE=env.django_settings_module):
+        local('python manage.py runserver 0.0.0.0:8080')
+
+def collectstatic():
+    with shell_env(DJANGO_SETTINGS_MODULE=env.django_settings_module):
+        local('mkdir static')
+        local('cd static && python ../manage.py collectstatic')
 
 ### DEPLOYMENT ###
 

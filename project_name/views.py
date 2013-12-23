@@ -19,7 +19,6 @@ from pure_pagination import Paginator, EmptyPage, PageNotAnInteger
 
 # Models
 from django.contrib.auth.models import User
-from models import Profile
 
 # Yardımcı metodlar
 def errors_to_json(errors):

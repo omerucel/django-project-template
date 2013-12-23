@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
 from django.core.exceptions import ObjectDoesNotExist
 
+"""
 class Profile(models.Model):
     FEMALE = 0
     MALE = 1
@@ -39,3 +40,4 @@ class Profile(models.Model):
             return 'http://graph.facebook.com/%s/picture?type=large' %(self.facebook_id)
         else:
             return settings.STATIC_URL + 'img/profile.png'
+"""
