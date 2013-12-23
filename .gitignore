@@ -1,0 +1,9 @@
+.idea
+*.pyc
+.DS_STORE
+vagrant/.vagrant
+settings_development.py
+settings_stage.py
+/static
+node_modules
+.sass-cache

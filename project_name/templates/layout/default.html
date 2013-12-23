@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="tr">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="alternate" type="application/rss+xml" title="{{ project_name }} RSS" href="/rss" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+    <link rel="stylesheet" href="{% static 'app.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+
+    <!--[if lt IE 9]>
+        <script src="{% static 'js/ie/respond.min.js' %}" cache="false"></script>
+        <script src="{% static 'js/ie/html5.js' %}" cache="false"></script>
+        <script src="{% static 'js/ie/excanvas.js' %}" cache="false"></script>
+    <![endif]-->
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    <div id="wrap">
+        {% block main_content %}{% endblock %}
+    </div>
+
+    <script type="text/javascript">
+        window.is_authenticated = {% if user.is_authenticated %}true{% else %}false{% endif %};
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{% static 'moment/moment.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'app.js' %}"></script>
+    {% block javascripts %}{% endblock %}
+</body>
+</html>
