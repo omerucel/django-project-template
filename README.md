@@ -4,29 +4,51 @@ Projeyi template dosyasından aşağıdaki komutla kurulur:
 $ django-admin.py startproject myproject --e py,conf,json,js,Vagrantfile,sample,html,gitignore --template=https://github.com/omerucel/django-project-template/archive/master.zip
 ```
 
-# Adım 1
-
-Ortam için gerekli paketler kurulmalı.
+# Vagrant
 
 ```bash
-$ npm install
-$ grunt watch
-$ source /home/vagrant/pythonproject/bin/activate
-$ cd /vagrant
-$ easy_install -U distribute
-$ pip install -r requirements.txt
+(local)$ cd vagrant
+(local)$ vagrant up
+(local)$ vagrant ssh
+(vagrant)$ source /home/vagrant/pythonproject/bin/activate
+(vagrant)$ easy_install -U distribute
+(vagrant)$ pip install -r requirements.txt
 ```
 
-# Adım 2
+# Database & Server
 
-Veritabanı oluşturulmalı.
+Vagrant ayarlandıktan sonra, proje ile çalışmak için aşağıdaki komutları çalıştırabilirsiniz:
 
-# Adım 3
-
-Veritabanı oluşturulmalı ve sunucu çalıştırılmalı.
-
+```bash
+(local)$ cd vagrant
+(local)$ vagrant up
+(local)$ vagrant ssh
+(vagrant)$ fab dev_syncdb
+(vagrant)$ fab dev_migrate
+(vagrant)$ fab dev_runserver
 ```
-$ fab dev_syncdb
-$ fab dev_migrate
-$ fab dev_runserver
+# Fabfile
+
+Fabfile dosyasında hem deployment için hem de veritabanı senkronizasyonu için komutlar bulunur. Örneğin model dosyanızda bir değişiklik olmuşsa, aşağıdaki komutları sırasıyla çalıştırmanız gerekir:
+
+```bash
+(vagrant)$ fab dev_check_migration
+(vagrant)$ fab dev_migrate
 ```
+
+# Deployment
+
+Aşağıdaki komutla, aws üzerinde açık olan bir sunucuya gerekli kurulumları yapıp sistemin çalışmasını sağlayabilirsiniz:
+
+```bash
+(local)$ fab stage deploy
+```
+
+fabfile.py dosyasında development, stage ve production profilleri eklendi. Bunlardan stage profilinde, deploy işleminden önce kendi ayarlarınızı düzenlemeniz gerekmekte.
+
+# Sass
+
+Sass dosyalarının otomatik olarak derlenmesi için aşağıdaki komut ayrı terminal ekranında çalıştırılabilir. sass klasörü içinde olası bir değişiklik sonrası project_name/static/app.css dosyası yeniden oluşturulur.
+
+(local)$ npm install
+(local)$ grunt watch
