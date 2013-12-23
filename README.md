@@ -1,7 +1,7 @@
 Projeyi template dosyasından aşağıdaki komutla kurulur:
 
 ```bash
-$ django-admin.py startproject myproject --e py,conf,json,js,Vagrantfile,sample,html,gitignore --template=https://github.com/omerucel/django-project-template/archive/master.zip
+$ django-admin.py startproject myproject -e py,conf,json,js,Vagrantfile,sample --template=https://github.com/omerucel/django-project-template/archive/master.zip
 ```
 
 # Vagrant
