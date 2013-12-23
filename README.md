@@ -8,12 +8,8 @@ $ django-admin.py startproject myproject -e py,conf,json,js,sample --template=ht
 
 ## vagrant/Vagrantfile
 
-*$web_server_ip* : Proje için ip adresi
-*$vagrant_module_path* : vagrant-shell-modules projesi yolu.
-
-## fabfile.py
-
-dev_runserver metodu içinde yer alan ip adresini
+- **$web_server_ip** : Proje için ip adresi
+- **$vagrant_module_path** : vagrant-shell-modules projesi yolu.
 
 # Vagrant
 
@@ -29,7 +25,7 @@ dev_runserver metodu içinde yer alan ip adresini
 
 # Database & Server
 
-Vagrant ayarlandıktan sonra, proje ile çalışmak için aşağıdaki komutları çalıştırabilirsiniz. Bu komutlar öncesinde *project_name/settings.py*, *project_name/settings_development.py*, *project_name/settings_stage.py* ayar dosyaları projeye göre düzenlenmeli.
+Vagrant ayarlandıktan sonra, proje ile çalışmak için aşağıdaki komutları çalıştırabilirsiniz. Bu komutlar öncesinde **project_name/settings.py**, **project_name/settings_development.py**, **project_name/settings_stage.py** ayar dosyaları projeye göre düzenlenmeli.
 
 ```bash
 (local)$ mv project_name/settings_development.py.sample project_name/settings_development.py
@@ -64,7 +60,7 @@ fabfile.py dosyasında development, stage ve production profilleri eklendi. Bunl
 
 # Sass
 
-Sass dosyalarının otomatik olarak derlenmesi için aşağıdaki komut ayrı terminal ekranında çalıştırılabilir. sass klasörü içinde olası bir değişiklik sonrası project_name/static/app.css dosyası yeniden oluşturulur.
+Sass dosyalarının otomatik olarak derlenmesi için aşağıdaki komut ayrı terminal ekranında çalıştırılabilir. sass klasörü içinde olası bir değişiklik sonrası **project_name/static/app.css** dosyası yeniden oluşturulur.
 
 (local)$ npm install
 (local)$ grunt watch
