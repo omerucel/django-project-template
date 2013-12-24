@@ -28,8 +28,8 @@ $ django-admin.py startproject myproject -e py,conf,json,js,sample --template=ht
 Vagrant ayarlandıktan sonra, proje ile çalışmak için aşağıdaki komutları çalıştırabilirsiniz. Bu komutlar öncesinde **project_name/settings.py**, **project_name/settings_development.py**, **project_name/settings_stage.py** ayar dosyaları projeye göre düzenlenmeli.
 
 ```bash
-(local)$ mv project_name/settings_development.py.sample project_name/settings_development.py
-(local)$ mv project_name/settings_stage.py.sample project_name/settings_stage.py
+(local)$ cp project_name/settings_development.py.sample project_name/settings_development.py
+(local)$ cp project_name/settings_stage.py.sample project_name/settings_stage.py
 (local)$ cd vagrant
 (local)$ vagrant up
 (local)$ vagrant ssh

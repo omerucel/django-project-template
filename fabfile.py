@@ -58,7 +58,7 @@ def migrate():
     with shell_env(DJANGO_SETTINGS_MODULE=env.django_settings_module):
         local('python manage.py migrate {{ project_name }}')
 
-def dev_check_migration():
+def check_migration():
     with shell_env(DJANGO_SETTINGS_MODULE=env.django_settings_module):
         local('python manage.py schemamigration {{ project_name }} --auto')
 
